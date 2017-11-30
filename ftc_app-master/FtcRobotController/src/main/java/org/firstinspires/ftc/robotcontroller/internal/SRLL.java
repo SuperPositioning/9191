@@ -5,17 +5,16 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 
-@Autonomous(name = "StndAuto", group = "9191")
-public class StndAuto extends LinearOpMode {
-    private DcMotor left;
+@Autonomous(name="SRLL", group="9191")
+public    class SRLL   extends LinearOpMode{
     private DcMotor right;
+    private DcMotor left;
     private DcMotor ArmLeft;
     private DcMotor ArmRight; //Motor for lifting
     private Servo servo1; //Right servo on arm
     private Servo servo2; //Left servo on arm
     //double servo1Pos = servo1.getPosition(); //Creates a variable that has the value of the current position of servo 1
     //double servo2Pos = servo2.getPosition(); //Creates a variable that has the value of the current position of servo 2
-
 
     private void goForward(double power, int runtime) {
         left.setPower(power);
@@ -69,10 +68,7 @@ public class StndAuto extends LinearOpMode {
         servo2.setPosition(1); //Setting servo2 to start in initialization at start position, has to be between 0 and 1
         waitForStart();
 
-        goForward(1, 1000); //Drives forward at full power for 1000 milliseconds
-        goBack(1, 1000); //Drives backward at full power for 1000 milliseconds
-        turnLeft(1, 1000); //Turns left at full power for 1000 milliseconds
-        turnRight(1, 1000); //Turns right at full power for 1000 milliseconds
+
 
     }
 }
