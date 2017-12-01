@@ -5,7 +5,6 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 
-@Autonomous(name = "StndAuto", group = "9191")
 public class StndAuto extends LinearOpMode {
     private DcMotor left;
     private DcMotor right;

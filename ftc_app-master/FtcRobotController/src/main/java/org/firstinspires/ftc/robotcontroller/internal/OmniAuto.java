@@ -8,7 +8,6 @@ import com.qualcomm.robotcore.hardware.Servo;
  * Created by Brandt_Ross on 10/3/17.
  */
 
-@Autonomous(name = "OmniAuto", group = "9191")
 public class OmniAuto extends LinearOpMode{
 
     //TODO: Add the variables for operating the arm
