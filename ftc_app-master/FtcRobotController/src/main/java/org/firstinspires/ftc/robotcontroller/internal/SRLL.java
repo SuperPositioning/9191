@@ -68,7 +68,15 @@ public    class SRLL   extends LinearOpMode{
         servo2.setPosition(1); //Setting servo2 to start in initialization at start position, has to be between 0 and 1
         waitForStart();
 
-
+    turnRight(1,200);
+    goBack(1,1000);
+    goForward(1,200);
+    turnLeft(1,1000);
+    goForward(1,1000);
+    turnRight(1,1000);
+    goForward(1,1000);
+    turnRight(1,1000);
+    goForward(1,1000);
 
     }
 }
