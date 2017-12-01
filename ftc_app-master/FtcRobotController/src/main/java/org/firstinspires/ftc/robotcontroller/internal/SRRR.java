@@ -11,8 +11,6 @@ public    class SRRR extends LinearOpMode {
     private DcMotor ArmRight; //Motor for lifting
     private Servo servo1; //Right servo on arm
     private Servo servo2; //Left servo on arm
-    //double servo1Pos = servo1.getPosition(); //Creates a variable that has the value of the current position of servo 1
-    //double servo2Pos = servo2.getPosition(); //Creates a variable that has the value of the current position of servo 2
 
     private void goForward(double power, int runtime) {
         left.setPower(power);
@@ -46,16 +44,6 @@ public    class SRRR extends LinearOpMode {
         right.setPower(0);
     }
 
-    private void closeArm(double power, int runtime) {
-        //servo1.setPosition(servo1Pos + .01);
-        //servo2.setPosition(servo2Pos - .01);
-    }
-
-    private void openArm(double power, int runtime) {
-        //servo1.setPosition(servo1Pos - .01);
-        //servo2.setPosition(servo2Pos + .01);
-
-    }
 
     @Override
     public void runOpMode() throws InterruptedException {

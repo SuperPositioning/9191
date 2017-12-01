@@ -44,15 +44,6 @@ public    class SRLL   extends LinearOpMode{
         left.setPower(0);
         right.setPower(0);
     }
-    private void closeArm (double power, int runtime){
-        //servo1.setPosition(servo1Pos + .01);
-        //servo2.setPosition(servo2Pos - .01);
-    }
-    private void openArm (double power, int runtime){
-        //servo1.setPosition(servo1Pos - .01);
-        //servo2.setPosition(servo2Pos + .01);
-
-    }
 
     @Override
     public void runOpMode() throws InterruptedException {
