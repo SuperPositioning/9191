@@ -35,11 +35,11 @@ public class ChaseTele extends OpMode {
         double servo2Pos = servo2.getPosition(); //Creates a variable that has the value of the current position of servo 2 and has decimal values
         //Servos
         if (gamepad2.right_stick_x < 0 && servo1Pos < .8 && servo2Pos > -.8) { //Closing arm
-            servo1.setPosition(servo1Pos + .01);
-            servo2.setPosition(servo2Pos - .01);
+            servo1.setPosition(servo1Pos + .02);
+            servo2.setPosition(servo2Pos - .02);
         } else if (gamepad2.right_stick_x > 0 && servo1Pos != 0 && servo2Pos != 1) { //Opening arm
-            servo1.setPosition(servo1Pos - .01);
-            servo2.setPosition(servo2Pos + .01);
+            servo1.setPosition(servo1Pos - .02);
+            servo2.setPosition(servo2Pos + .02);
         }
         //Driving
         if (gamepad1.left_stick_y != 0) { //Driving
@@ -56,8 +56,8 @@ public class ChaseTele extends OpMode {
         }
 
         if (gamepad2.left_stick_y !=0) { //Arm lift
-            armLeft.setPower(gamepad2.left_stick_y * .3);
-            armRight.setPower(gamepad2.left_stick_y * .3);
+            armLeft.setPower(gamepad2.left_stick_y * .4);
+            armRight.setPower(gamepad2.left_stick_y * .4);
         }else{ //Null
             armLeft.setPower(0);
             armRight.setPower(0);
