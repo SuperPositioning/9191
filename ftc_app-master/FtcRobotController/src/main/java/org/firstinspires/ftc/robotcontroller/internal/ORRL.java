@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.hardware.Servo;
  * Created by Brandt_Ross on 12/1/17.
  */
 
-@Autonomous(name = "OmniAuto", group = "9191")
+@Autonomous(name = "ORRL", group = "9191")
 public class ORRL extends LinearOpMode {
     //TODO: Add the variables for operating the arm
     private DcMotor frontLeft; //This defines the front left motor as a motor
