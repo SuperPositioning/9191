@@ -34,7 +34,7 @@ public class ChaseTele extends OpMode {
         double servo1Pos = servo1.getPosition(); //Creates a variable that has the value of the current position of servo 1 and has decimal values
         double servo2Pos = servo2.getPosition(); //Creates a variable that has the value of the current position of servo 2 and has decimal values
         //Servos
-        if (gamepad2.right_stick_x < 0 && servo1Pos < .43 && servo2Pos > -.43) { //Closing arm
+        if (gamepad2.right_stick_x < 0 && servo1Pos < .8 && servo2Pos > -.8) { //Closing arm
             servo1.setPosition(servo1Pos + .01);
             servo2.setPosition(servo2Pos - .01);
         } else if (gamepad2.right_stick_x > 0 && servo1Pos != 0 && servo2Pos != 1) { //Opening arm

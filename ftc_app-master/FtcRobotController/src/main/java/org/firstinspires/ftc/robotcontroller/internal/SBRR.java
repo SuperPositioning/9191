@@ -45,7 +45,7 @@ public    class SBRR extends LinearOpMode {
         left.setPower(0);
         right.setPower(0);
     }
-    
+
     @Override
     public void runOpMode() throws InterruptedException {
         left = hardwareMap.dcMotor.get("left"); //left wheel motor is defined and named
