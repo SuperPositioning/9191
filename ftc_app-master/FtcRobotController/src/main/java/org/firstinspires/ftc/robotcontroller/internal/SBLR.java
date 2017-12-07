@@ -1,9 +1,11 @@
 package org.firstinspires.ftc.robotcontroller.internal;
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 
+@Autonomous(name="SBLR", group="9191")
 public    class SBLR extends LinearOpMode {
     private DcMotor right;
     private DcMotor left;

@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 
+@Autonomous(name="StndAuto", group="9191")
 public class StndAuto extends LinearOpMode {
     private DcMotor left;
     private DcMotor right;
@@ -31,15 +32,15 @@ public class StndAuto extends LinearOpMode {
         right.setPower(0);
     }
     private void turnLeft(double power, int runtime) {
-        left.setPower(power);
-        right.setPower(-power);
+        left.setPower(-power);
+        right.setPower(power);
         sleep(runtime);
         left.setPower(0);
         right.setPower(0);
     }
     private void turnRight(double power, int runtime) {
-        left.setPower(-power);
-        right.setPower(power);
+        left.setPower(power);
+        right.setPower(-power);
         sleep(runtime);
         left.setPower(0);
         right.setPower(0);
@@ -62,16 +63,12 @@ public class StndAuto extends LinearOpMode {
         ArmRight = hardwareMap.dcMotor.get("armRight"); //Right motor arm is defined and named
         servo1 = hardwareMap.servo.get("servo1"); //servo1 (gripper servo) is defined
         servo2 = hardwareMap.servo.get("servo2"); //servo2 (gripper servo) is defined
-        right.setDirection(DcMotorSimple.Direction.REVERSE); //Right wheel is always negative, for wheel base, because of base assembly
+        left.setDirection(DcMotorSimple.Direction.REVERSE); //Right wheel is always negative, for wheel base, because of base assembly
         ArmLeft.setDirection(DcMotorSimple.Direction.REVERSE); //Right arm is always negative for lifting, because of assembly
-        servo1.setPosition(-1); //Setting servo1 to start in initialization at start position, has to be between 0 and 1
-        servo2.setPosition(1); //Setting servo2 to start in initialization at start position, has to be between 0 and 1
+        servo1.setPosition(1); //Setting servo1 to start in initialization at start position, has to be between 0 and 1
+        servo2.setPosition(-1); //Setting servo2 to start in initialization at start position, has to be between 0 and 1
         waitForStart();
 
-        goForward(1, 1000); //Drives forward at full power for 1000 milliseconds
-        goBack(1, 1000); //Drives backward at full power for 1000 milliseconds
-        turnLeft(1, 1000); //Turns left at full power for 1000 milliseconds
-        turnRight(1, 1000); //Turns right at full power for 1000 milliseconds
-
+        turnRight(1, 900); //Drives forward at full power for 1000 milliseconds
     }
 }
