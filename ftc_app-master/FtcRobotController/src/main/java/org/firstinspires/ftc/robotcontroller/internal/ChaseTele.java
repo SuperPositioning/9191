@@ -56,8 +56,8 @@ public class ChaseTele extends OpMode {
         }
 
         if (gamepad2.left_stick_y !=0) { //Arm lift
-            armLeft.setPower(gamepad2.left_stick_y * .4);
-            armRight.setPower(gamepad2.left_stick_y * .4);
+            armLeft.setPower(gamepad2.left_stick_y * .33);
+            armRight.setPower(gamepad2.left_stick_y * .33);
         }else{ //Null
             armLeft.setPower(0);
             armRight.setPower(0);
