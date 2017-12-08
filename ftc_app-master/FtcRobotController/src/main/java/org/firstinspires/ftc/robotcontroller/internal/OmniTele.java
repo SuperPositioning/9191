@@ -1,4 +1,5 @@
 package org.firstinspires.ftc.robotcontroller.internal;
+
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -38,11 +39,6 @@ public class OmniTele extends OpMode {
 
         gripperRightHand.setPosition(1); //This initializes the right servo for the gripper
         gripperLeftHand.setPosition(0); //This initializes the left servo for the gripper
-
-        frontLeft.setDirection(DcMotorSimple.Direction.REVERSE);
-        frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
-        backLeft.setDirection(DcMotorSimple.Direction.REVERSE);
-        backRight.setDirection(DcMotorSimple.Direction.REVERSE);
     }
 
     public void loop(){
@@ -53,20 +49,20 @@ public class OmniTele extends OpMode {
 
         //This deals with moving the robot forward, backward, left, or right
         if (gamepad1.left_stick_y != 0){
-            frontLeft.setPower(gamepad1.left_stick_y);
-            frontRight.setPower(gamepad1.left_stick_y);
-            backLeft.setPower(-gamepad1.left_stick_y);
-            backRight.setPower(-gamepad1.left_stick_y);
+            frontLeft.setPower(-gamepad1.left_stick_y);
+            frontRight.setPower(-gamepad1.left_stick_y);
+            backLeft.setPower(gamepad1.left_stick_y);
+            backRight.setPower(gamepad1.left_stick_y);
         } else if(gamepad1.left_stick_x != 0){
-            frontLeft.setPower(-gamepad1.left_stick_x);
-            frontRight.setPower(gamepad1.left_stick_x);
-            backLeft.setPower(gamepad1.left_stick_x);
-            backRight.setPower(-gamepad1.left_stick_x);
+            frontLeft.setPower(gamepad1.left_stick_x);
+            frontRight.setPower(-gamepad1.left_stick_x);
+            backLeft.setPower(-gamepad1.left_stick_x);
+            backRight.setPower(gamepad1.left_stick_x);
         } else if (gamepad1.right_stick_x != 0) {
-            frontLeft.setPower(gamepad1.right_stick_x);
-            frontRight.setPower(gamepad1.right_stick_x);
-            backLeft.setPower(gamepad1.right_stick_x);
-            backRight.setPower(gamepad1.right_stick_x);
+            frontLeft.setPower(-gamepad1.right_stick_x);
+            frontRight.setPower(-gamepad1.right_stick_x);
+            backLeft.setPower(-gamepad1.right_stick_x);
+            backRight.setPower(-gamepad1.right_stick_x);
         } else {
             frontLeft.setPower(0);
             frontRight.setPower(0);
