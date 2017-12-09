@@ -54,13 +54,21 @@ public class ChaseTele extends OpMode {
             left.setPower(0);
             right.setPower(0);
         }
-
-        if (gamepad2.left_stick_y !=0) { //Arm lift
-            armLeft.setPower(gamepad2.left_stick_y * .33);
-            armRight.setPower(gamepad2.left_stick_y * .33);
-        }else{ //Null
+        //Arm
+        if (gamepad2.left_stick_y < 0) { //Up
+            armLeft.setPower(gamepad2.left_stick_y * .4);
+            armRight.setPower(gamepad2.left_stick_y * .4);
+        } else if (gamepad2.left_stick_y > 0) { //Down
+            armLeft.setPower(gamepad2.left_stick_y * .1);
+            armRight.setPower(gamepad2.left_stick_y * .1);
+        } else { //Null
             armLeft.setPower(0);
             armRight.setPower(0);
+        }
+        //TODO: Add button to set servo position just outside of the size of the block
+        if (gamepad2.left_bumper = 1){
+            servo1.setPosition(.5);
+            servo2.setPosition(.5);
         }
     }
 }

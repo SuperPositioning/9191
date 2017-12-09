@@ -65,8 +65,8 @@ public class StndAuto extends LinearOpMode {
         servo2 = hardwareMap.servo.get("servo2"); //servo2 (gripper servo) is defined
         left.setDirection(DcMotorSimple.Direction.REVERSE); //Right wheel is always negative, for wheel base, because of base assembly
         ArmLeft.setDirection(DcMotorSimple.Direction.REVERSE); //Right arm is always negative for lifting, because of assembly
-        servo1.setPosition(1); //Setting servo1 to start in initialization at start position, has to be between 0 and 1
-        servo2.setPosition(-1); //Setting servo2 to start in initialization at start position, has to be between 0 and 1
+        servo1.setPosition(.4); //Setting servo1 to start in initialization at start position, has to be between 0 and 1
+        servo2.setPosition(-.4); //Setting servo2 to start in initialization at start position, has to be between 0 and 1
         waitForStart();
 
         goBack(1,1500);
