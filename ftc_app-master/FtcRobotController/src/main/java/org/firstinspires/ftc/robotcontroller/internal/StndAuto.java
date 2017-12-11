@@ -70,5 +70,6 @@ public class StndAuto extends LinearOpMode {
         waitForStart();
 
         goBack(1,1500);
+        ;
     }
 }
