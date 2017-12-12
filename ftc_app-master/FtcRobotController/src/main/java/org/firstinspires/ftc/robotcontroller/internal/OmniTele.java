@@ -3,7 +3,6 @@ package org.firstinspires.ftc.robotcontroller.internal;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 
 /**
@@ -20,7 +19,6 @@ public class OmniTele extends OpMode {
     private DcMotor backRight; //This defines the back right motor as a motor
     private DcMotor armRight; //This defines the arm motor as a motor
     private DcMotor armLeft; //This defines the arm motor as a motor
-
     private Servo gripperLeftHand; //This defines the left servo of the gripper as a servo
     private Servo gripperRightHand; //This defines the right servo of the gripper as a servo
 
@@ -71,26 +69,24 @@ public class OmniTele extends OpMode {
         }
 
         //This code will have the gripper close and open
-        if (gamepad2.left_bumper && gripperLeftHandPos != .5) {
-            gripperLeftHand.setPosition(gripperLeftHandPos - .1);
-        } else if (gamepad2.left_trigger != 0 && gripperLeftHandPos != 1){
-            gripperLeftHand.setPosition(gripperLeftHandPos + .1);
-        }
-
-        if (gamepad2.right_bumper && gripperRightHandPos != 1) {
-            gripperRightHand.setPosition(gripperRightHandPos + .1);
-        } else if (gamepad2.right_trigger != 0 && gripperRightHandPos != .5){
-            gripperRightHand.setPosition(gripperRightHandPos - .1);
+        if (gamepad2.right_stick_x < 0 && gripperRightHandPos < .8 && gripperLeftHandPos > -.8) { //If the right stick is pushed left, the servos close
+            gripperRightHand.setPosition(gripperRightHandPos + .02);
+            gripperLeftHand.setPosition(gripperLeftHandPos - .02);
+        } else if (gamepad2.right_stick_x > 0 && gripperRightHandPos != 0 && gripperLeftHandPos != 1) { //If the left stick is pushed right, the servos open
+            gripperRightHand.setPosition(gripperRightHandPos - .02);
+            gripperLeftHand.setPosition(gripperLeftHandPos + .02);
         }
 
         //TODO: redo the arm completely
         //This adds support for the arm
         if (gamepad2.left_stick_y != 0){
-            armRight.setPower(gamepad2.left_stick_y * .25);
-            armLeft.setPower(-gamepad2.left_stick_y * .25);
+            armRight.setPower(gamepad2.left_stick_y * .4);
+            armLeft.setPower(-gamepad2.left_stick_y * .4);
         } else {
             armRight.setPower(0);
             armLeft.setPower(0);
         }
+        telemetry.addLine("left: " + gripperLeftHandPos);
+        telemetry.addLine("right: " + gripperRightHandPos);
     }
 }
