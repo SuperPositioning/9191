@@ -69,7 +69,7 @@ public class OmniTele extends OpMode {
         }
 
         //This code will have the gripper close and open
-        if (gamepad2.right_stick_x < 0 && gripperRightHandPos < .8 && gripperLeftHandPos > -.8) { //If the right stick is pushed left, the servos close
+        if (gamepad2.right_stick_x < 0 && gripperRightHandPos < 0 && gripperLeftHandPos > 0) { //If the right stick is pushed left, the servos close
             gripperRightHand.setPosition(gripperRightHandPos + .02);
             gripperLeftHand.setPosition(gripperLeftHandPos - .02);
         } else if (gamepad2.right_stick_x > 0 && gripperRightHandPos != 0 && gripperLeftHandPos != 1) { //If the left stick is pushed right, the servos open
