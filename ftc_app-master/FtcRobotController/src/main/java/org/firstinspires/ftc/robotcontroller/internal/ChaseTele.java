@@ -15,36 +15,36 @@ public class ChaseTele extends OpMode {
     public DcMotor backRight; //right wheel
     public DcMotor armLeft; //Left arm motor
     public DcMotor armRight; //Right arm motor
-    public Servo servo1; //Right servo on arm
-    public Servo servo2; //Left servo on arm
+    public Servo leftServo; //Right servo on arm
+    public Servo rightServo; //Left servo on arm
 
     @Override
     public void init() {
-        frontLeft = hardwareMap.dcMotor.get("left"); //Left wheel motor is defined and named
-        frontRight = hardwareMap.dcMotor.get("right"); //Right wheel motor is defined and named
-        backLeft = hardwareMap.dcMotor.get("left"); //Left wheel motor is defined and named
-        backRight = hardwareMap.dcMotor.get("right"); //Back right wheel motor is defined and named
+        frontLeft = hardwareMap.dcMotor.get("frontLeft"); //Left wheel motor is defined and named
+        frontRight = hardwareMap.dcMotor.get("frontRight"); //Right wheel motor is defined and named
+        backLeft = hardwareMap.dcMotor.get("backLeft"); //Left wheel motor is defined and named
+        backRight = hardwareMap.dcMotor.get("backRight"); //Back right wheel motor is defined and named
         armLeft = hardwareMap.dcMotor.get("armLeft");  //Left motor arm is defined and named
         armRight = hardwareMap.dcMotor.get("armRight"); //Right motor arm is defined and named
-        servo1 = hardwareMap.servo.get("servo1"); //servo1 (gripper servo) is defined
-        servo2 = hardwareMap.servo.get("servo2"); //servo2 (gripper servo) is defined
+        leftServo = hardwareMap.servo.get("leftServo"); //leftServo (gripper servo) is defined
+        rightServo = hardwareMap.servo.get("rightServo"); //rightServo (gripper servo) is defined
         frontRight.setDirection(DcMotorSimple.Direction.REVERSE); //Right wheels are always negative, for wheel base, because of base assembly
         backRight.setDirection(DcMotorSimple.Direction.REVERSE); //Right wheels are always negative, for wheel base, because of base assembly
         armLeft.setDirection(DcMotorSimple.Direction.REVERSE); //Right arm is always negative for lifting, because of assembly
-        servo1.setPosition(-1); //Setting servo1 to start in initialization at start position, has to be between 0 and 1
-        servo2.setPosition(1); //Setting servo2 to start in initialization at start position, has to be between 0 and 1
+        leftServo.setPosition(-1); //Setting leftServo to start in initialization at start position, has to be between 0 and 1
+        rightServo.setPosition(1); //Setting rightServo to start in initialization at start position, has to be between 0 and 1
     }
     @Override
     public void loop() {
-        double servo1Pos = servo1.getPosition(); //Creates a variable that has the value of the current position of servo 1 and has decimal values
-        double servo2Pos = servo2.getPosition(); //Creates a variable that has the value of the current position of servo 2 and has decimal values
+        double leftServoPos = leftServo.getPosition(); //Creates a variable that has the value of the current position of servo 1 and has decimal values
+        double rightServoPos = rightServo.getPosition(); //Creates a variable that has the value of the current position of servo 2 and has decimal values
         //Servos
-        if (gamepad2.right_stick_x < 0 && servo1Pos < .8 && servo2Pos > -.8) { //If the right stick is pushed left, the servos close
-            servo1.setPosition(servo1Pos + .02);
-            servo2.setPosition(servo2Pos - .02);
-        } else if (gamepad2.right_stick_x > 0 && servo1Pos != 0 && servo2Pos != 1) { //If the left stick is pushed right, the servos open
-            servo1.setPosition(servo1Pos - .02);
-            servo2.setPosition(servo2Pos + .02);
+        if (gamepad2.right_stick_x < 0 && leftServoPos < .8 && rightServoPos > -.8) { //If the right stick is pushed left, the servos close
+            leftServo.setPosition(leftServoPos + .02);
+            rightServo.setPosition(rightServoPos - .02);
+        } else if (gamepad2.right_stick_x > 0 && leftServoPos != 0 && rightServoPos != 1) { //If the left stick is pushed right, the servos open
+            leftServo.setPosition(leftServoPos - .02);
+            rightServo.setPosition(rightServoPos + .02);
         }
         //Driving
         if (gamepad1.left_stick_y != 0) { //Driving
@@ -62,6 +62,8 @@ public class ChaseTele extends OpMode {
         } else {//Null
             frontLeft.setPower(0);
             frontRight.setPower(0);
+            backLeft.setPower(0);
+            backRight.setPower(0);
         }
         //Arm
         if (gamepad2.left_stick_y < 0) { //If left stick is pushed up, arm moves up
@@ -75,8 +77,8 @@ public class ChaseTele extends OpMode {
             armRight.setPower(0);
         }
         if (gamepad2.left_bumper){ //Button to set servos just outside of the size of the cube
-            servo1.setPosition(.5);
-            servo2.setPosition(.5);
+            leftServo.setPosition(.5);
+            rightServo.setPosition(.5);
         }
     }
 }
