@@ -15,8 +15,8 @@ public class ChaseTele extends OpMode {
     public DcMotor backRight; //right wheel
     public DcMotor armLeft; //Left arm motor
     public DcMotor armRight; //Right arm motor
-    public Servo leftServo; //Right servo on arm
-    public Servo rightServo; //Left servo on arm
+    public Servo leftServo; //Left servo on arm
+    public Servo rightServo; //Right servo on arm
 
     @Override
     public void init() {
