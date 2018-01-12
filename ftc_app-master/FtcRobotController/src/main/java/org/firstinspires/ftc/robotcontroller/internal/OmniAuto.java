@@ -94,28 +94,6 @@ public class OmniAuto extends LinearOpMode{
         backRight.setPower(0);
     }
 
-    //TODO: Find what the parameters need to be
-    //TODO: Add the code to extend the arm
-    private void armUp (){
-
-    }
-
-    //TODO: Find what the parameters need to be
-    //TODO: Add the code to retract the arm
-    private void armDown (){
-
-    }
-
-    private void openClaw (){
-        gripperLeftHand.setPosition(0);
-        gripperRightHand.setPosition(1);
-    }
-
-    private void closeClaw (){
-        gripperLeftHand.setPosition(.5);
-        gripperRightHand.setPosition(.5);
-    }
-
     @Override
     public void runOpMode() throws InterruptedException {
         //TODO: Add defenitions of parts
