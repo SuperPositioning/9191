@@ -10,7 +10,6 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 //@Autonomous(name = "OBRL", group = "9191")
 public class OBRL extends LinearOpMode {
-    //TODO: Add the variables for operating the arm
     private DcMotor frontLeft; //This defines the front left motor as a motor
     private DcMotor frontRight; //This defines the front right motor as a motor
     private DcMotor backLeft; //This defines the back left motor as a motor
@@ -69,7 +68,6 @@ public class OBRL extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
-        //TODO: Add defenitions of parts
         frontLeft = hardwareMap.dcMotor.get("frontLeft"); //Sets a value for the front left motor
         frontRight = hardwareMap.dcMotor.get("frontRight"); //Sets a value for the front right motor
         backLeft = hardwareMap.dcMotor.get("backLeft"); //Sets a value for the back left motor
@@ -82,7 +80,7 @@ public class OBRL extends LinearOpMode {
         gripperLeftHand.setPosition(0); //This initializes the left servo for the gripper
 
         waitForStart(); //Anything after this will be run after we press initialize
-        //TODO: Add the thing to score points
+        //TODO: Test values
         rotateRight(1, 1000); //to face back of robot to jewel
         goBack(1, 1000); //to knock the jewel off
         goForward(1, 1000); //just a little to have room to turn

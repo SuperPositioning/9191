@@ -82,7 +82,7 @@ public class ORRR extends LinearOpMode {
         gripperLeftHand.setPosition(0); //This initializes the left servo for the gripper
 
         waitForStart(); //Anything after this will be run after we press initialize
-        //TODO: Add the thing to score points
+        //TODO: Test values
         rotateLeft(1,1000); //to face back of robot to jewel
         goBack(1,1000); //to knock the jewel off
         goForward(1, 1000); //just a little to have room to turn
