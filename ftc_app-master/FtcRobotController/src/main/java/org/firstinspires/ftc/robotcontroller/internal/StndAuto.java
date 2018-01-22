@@ -7,31 +7,41 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 @Autonomous(name="StndAuto", group="9191")
 public class StndAuto extends LinearOpMode {
-    private DcMotor left;
-    private DcMotor right;
-    private DcMotor ArmLeft;
-    private DcMotor ArmRight; //Motor for lifting
-    private Servo servo1; //Right servo on arm
-    private Servo servo2; //Left servo on arm
-    //double servo1Pos = servo1.getPosition(); //Creates a variable that has the value of the current position of servo 1
-    //double servo2Pos = servo2.getPosition(); //Creates a variable that has the value of the current position of servo 2
+    public DcMotor frontLeft; //left wheel
+    public DcMotor frontRight; //right wheel
+    public DcMotor backLeft; //left wheel
+    public DcMotor backRight; //right wheel
+    public DcMotor armLeft; //Left arm motor
+    public DcMotor armRight; //Right arm motor
+    public Servo leftServo; //Left servo on arm
+    public Servo rightServo; //Right servo on arm
 
 
     private void goForward(double power, int runtime) {
-        left.setPower(power);
-        right.setPower(power);
+        frontLeft.setPower(-power);
+        frontRight.setPower(-power);
+        backLeft.setPower(power);
+        backRight.setPower(power);
         sleep(runtime);
-        left.setPower(0);
-        right.setPower(0);
-    }
-    private void goBack(double power, int runtime) {
-        left.setPower(-power);
-        right.setPower(-power);
+        backLeft.setPower(0);
+        backRight.setPower(0);
+        frontLeft.setPower(0);
+        frontRight.setPower(0);
+
+    /*private void goBack(double power, int runtime) {
+        frontLeft.setPower(power);
+        frontRight.setPower(power);
+        backLeft.setPower(-power);
+        backRight.setPower(-power);
         sleep(runtime);
-        left.setPower(0);
-        right.setPower(0);
+        frontLeft.setPower(0);
+        frontRight.setPower(0);
+        backLeft.setPower(0);
+        backRight.setPower(0);
+    }*/
+
     }
-    private void turnLeft(double power, int runtime) {
+   /* private void turnLeft(double power, int runtime) {
         left.setPower(-power);
         right.setPower(power);
         sleep(runtime);
@@ -45,31 +55,32 @@ public class StndAuto extends LinearOpMode {
         left.setPower(0);
         right.setPower(0);
     }
-    private void closeArm (double power, int runtime){
+    /*private void closeArm (double power, int runtime){
         //servo1.setPosition(servo1Pos + .01);
         //servo2.setPosition(servo2Pos - .01);
-    }
-    private void openArm (double power, int runtime){
+    }*/
+    /*private void openArm (double power, int runtime){
         //servo1.setPosition(servo1Pos - .01);
         //servo2.setPosition(servo2Pos + .01);
-
-    }
+    }*/
 
     @Override
     public void runOpMode() throws InterruptedException {
-        left = hardwareMap.dcMotor.get("left"); //left wheel motor is defined and named
-        right = hardwareMap.dcMotor.get("right"); //right wheel motor is defined and named
-        ArmLeft = hardwareMap.dcMotor.get("armLeft");  //Left motor arm is defined and named
-        ArmRight = hardwareMap.dcMotor.get("armRight"); //Right motor arm is defined and named
-        servo1 = hardwareMap.servo.get("servo1"); //servo1 (gripper servo) is defined
-        servo2 = hardwareMap.servo.get("servo2"); //servo2 (gripper servo) is defined
-        left.setDirection(DcMotorSimple.Direction.REVERSE); //Right wheel is always negative, for wheel base, because of base assembly
-        ArmLeft.setDirection(DcMotorSimple.Direction.REVERSE); //Right arm is always negative for lifting, because of assembly
-        servo1.setPosition(.4); //Setting servo1 to start in initialization at start position, has to be between 0 and 1
-        servo2.setPosition(-.4); //Setting servo2 to start in initialization at start position, has to be between 0 and 1
+        frontLeft = hardwareMap.dcMotor.get("frontLeft"); //Left wheel motor is defined and named
+        frontRight = hardwareMap.dcMotor.get("frontRight"); //Right wheel motor is defined and named
+        backLeft = hardwareMap.dcMotor.get("backLeft"); //Left wheel motor is defined and named
+        backRight = hardwareMap.dcMotor.get("backRight"); //Back right wheel motor is defined and named
+        armLeft = hardwareMap.dcMotor.get("armLeft");  //Left motor arm is defined and named
+        armRight = hardwareMap.dcMotor.get("armRight"); //Right motor arm is defined and named
+        leftServo = hardwareMap.servo.get("leftServo"); //leftServo (gripper servo) is defined
+        rightServo = hardwareMap.servo.get("rightServo"); //rightServo (gripper servo) is defined
+        frontRight.setDirection(DcMotorSimple.Direction.REVERSE); //Right wheels are always negative, for wheel base, because of base assembly
+        backRight.setDirection(DcMotorSimple.Direction.REVERSE); //Right wheels are always negative, for wheel base, because of base assembly
+        armLeft.setDirection(DcMotorSimple.Direction.REVERSE); //Right arm is always negative for lifting, because of assembly
+        leftServo.setPosition(-1); //Setting leftServo to start in initialization at start position, has to be between 0 and 1
+        rightServo.setPosition(1); //Setting rightServo to start in initialization at start position, has to be between 0 and 1
         waitForStart();
 
-        goBack(1,1500);
-        ;
+        goForward(.5,1500);
     }
 }

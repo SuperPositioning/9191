@@ -51,8 +51,8 @@ public class ChaseTele extends OpMode {
             //If the left stick of controller 1 y not = 0, the robot will move forward or backward, setting the power to how far the stick is pushed
             frontLeft.setPower(gamepad1.left_stick_y * .8);
             frontRight.setPower(gamepad1.left_stick_y * .8);
-            backLeft.setPower(gamepad1.left_stick_y * .8);
-            backRight.setPower(gamepad1.left_stick_y * .8);
+            backLeft.setPower(gamepad1.left_stick_y * -.8);
+            backRight.setPower(gamepad1.left_stick_y * -.8);
         } else if (gamepad1.right_stick_x != 0) { //Turning
             //If the right stick of controller 1 x not = 0, the robot will turn right or left, setting the power to how far the stick is pushed
             frontLeft.setPower(-gamepad1.right_stick_x * .5);
@@ -67,8 +67,8 @@ public class ChaseTele extends OpMode {
         }
         //Arm
         if (gamepad2.left_stick_y < 0) { //If left stick is pushed up, arm moves up
-            armLeft.setPower(gamepad2.left_stick_y * .4);
-            armRight.setPower(gamepad2.left_stick_y * .4);
+            armLeft.setPower(gamepad2.left_stick_y * .5);
+            armRight.setPower(gamepad2.left_stick_y * .5);
         } else if (gamepad2.left_stick_y > 0) { //If left stick is pushed down, arm moves down
             armLeft.setPower(gamepad2.left_stick_y * .1);
             armRight.setPower(gamepad2.left_stick_y * .1);
@@ -76,9 +76,9 @@ public class ChaseTele extends OpMode {
             armLeft.setPower(0);
             armRight.setPower(0);
         }
-        if (gamepad2.left_bumper){ //Button to set servos just outside of the size of the cube
-            leftServo.setPosition(.5);
-            rightServo.setPosition(.5);
+        if (gamepad2.right_bumper){ //Button to set servos just outside of the size of the cube
+            leftServo.setPosition(.65);//More towards 1 is more open
+            rightServo.setPosition(.45);//More towards 1 is more open
         }
     }
 }

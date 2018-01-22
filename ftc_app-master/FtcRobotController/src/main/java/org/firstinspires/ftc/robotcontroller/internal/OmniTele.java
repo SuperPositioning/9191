@@ -46,7 +46,7 @@ public class OmniTele extends OpMode {
 
         //This deals with moving the robot forward, backward, left, or right
         if (gamepad1.left_stick_y != 0){
-            frontLeft.setPower(-gamepad1.left_stick_y);
+            frontLeft.setPower(-gamepad1.left_stick_y );
             frontRight.setPower(-gamepad1.left_stick_y);
             backLeft.setPower(gamepad1.left_stick_y);
             backRight.setPower(gamepad1.left_stick_y);
