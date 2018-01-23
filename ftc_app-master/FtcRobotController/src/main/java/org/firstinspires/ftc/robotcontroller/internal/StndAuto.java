@@ -27,42 +27,7 @@ public class StndAuto extends LinearOpMode {
         backRight.setPower(0);
         frontLeft.setPower(0);
         frontRight.setPower(0);
-
-    /*private void goBack(double power, int runtime) {
-        frontLeft.setPower(power);
-        frontRight.setPower(power);
-        backLeft.setPower(-power);
-        backRight.setPower(-power);
-        sleep(runtime);
-        frontLeft.setPower(0);
-        frontRight.setPower(0);
-        backLeft.setPower(0);
-        backRight.setPower(0);
-    }*/
-
     }
-   /* private void turnLeft(double power, int runtime) {
-        left.setPower(-power);
-        right.setPower(power);
-        sleep(runtime);
-        left.setPower(0);
-        right.setPower(0);
-    }
-    private void turnRight(double power, int runtime) {
-        left.setPower(power);
-        right.setPower(-power);
-        sleep(runtime);
-        left.setPower(0);
-        right.setPower(0);
-    }
-    /*private void closeArm (double power, int runtime){
-        //servo1.setPosition(servo1Pos + .01);
-        //servo2.setPosition(servo2Pos - .01);
-    }*/
-    /*private void openArm (double power, int runtime){
-        //servo1.setPosition(servo1Pos - .01);
-        //servo2.setPosition(servo2Pos + .01);
-    }*/
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -79,8 +44,8 @@ public class StndAuto extends LinearOpMode {
         armLeft.setDirection(DcMotorSimple.Direction.REVERSE); //Right arm is always negative for lifting, because of assembly
         leftServo.setPosition(-1); //Setting leftServo to start in initialization at start position, has to be between 0 and 1
         rightServo.setPosition(1); //Setting rightServo to start in initialization at start position, has to be between 0 and 1
-        waitForStart();
 
+        waitForStart();
         goForward(.5,1500);
     }
 }

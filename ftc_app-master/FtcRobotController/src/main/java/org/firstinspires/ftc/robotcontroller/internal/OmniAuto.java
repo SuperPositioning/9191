@@ -1,6 +1,6 @@
 package org.firstinspires.ftc.robotcontroller.internal;
-
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
@@ -8,6 +8,7 @@ import com.qualcomm.robotcore.hardware.Servo;
  * Created by Brandt_Ross on 10/3/17.
  */
 
+@Autonomous(name="OmniAuto", group="9191")
 public class OmniAuto extends LinearOpMode{
     private DcMotor frontLeft; //This defines the front left motor as a motor
     private DcMotor frontRight; //This defines the front right motor as a motor
@@ -19,69 +20,9 @@ public class OmniAuto extends LinearOpMode{
 
     private void goForward (double power, int runtime){
         frontLeft.setPower(power);
-        frontRight.setPower(-power);
-        backLeft.setPower(power);
-        backRight.setPower(-power);
-        sleep(runtime);
-        frontLeft.setPower(0);
-        frontRight.setPower(0);
-        backLeft.setPower(0);
-        backRight.setPower(0);
-    }
-
-    private void goBack (double power, int runtime){
-        frontLeft.setPower(-power);
-        frontRight.setPower(power);
-        backLeft.setPower(-power);
-        backRight.setPower(power);
-        sleep(runtime);
-        frontLeft.setPower(0);
-        frontRight.setPower(0);
-        backLeft.setPower(0);
-        backRight.setPower(0);
-    }
-
-    private void goLeft (double power, int runtime){
-        frontLeft.setPower(-power);
-        frontRight.setPower(-power);
-        backLeft.setPower(power);
-        backRight.setPower(power);
-        sleep(runtime);
-        frontLeft.setPower(0);
-        frontRight.setPower(0);
-        backLeft.setPower(0);
-        backRight.setPower(0);
-    }
-
-    private void goRight (double power, int runtime){
-        frontLeft.setPower(power);
         frontRight.setPower(power);
         backLeft.setPower(-power);
         backRight.setPower(-power);
-        sleep(runtime);
-        frontLeft.setPower(0);
-        frontRight.setPower(0);
-        backLeft.setPower(0);
-        backRight.setPower(0);
-    }
-
-    private void rotateLeft (double power, int runtime){
-        frontLeft.setPower(-power);
-        frontRight.setPower(-power);
-        backLeft.setPower(-power);
-        backRight.setPower(-power);
-        sleep(runtime);
-        frontLeft.setPower(0);
-        frontRight.setPower(0);
-        backLeft.setPower(0);
-        backRight.setPower(0);
-    }
-
-    private void rotateRight (double power, int runtime){
-        frontLeft.setPower(power);
-        frontRight.setPower(power);
-        backLeft.setPower(power);
-        backRight.setPower(power);
         sleep(runtime);
         frontLeft.setPower(0);
         frontRight.setPower(0);
@@ -103,5 +44,6 @@ public class OmniAuto extends LinearOpMode{
         gripperLeftHand.setPosition(0); //This initializes the left servo for the gripper
 
         waitForStart(); //Anything after this will be run after we press initialize
+        goForward(1,1500);
     }
 }

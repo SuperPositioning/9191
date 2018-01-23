@@ -1,5 +1,4 @@
 package org.firstinspires.ftc.robotcontroller.internal;
-
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -46,10 +45,10 @@ public class OmniTele extends OpMode {
 
         //This deals with moving the robot forward, backward, left, or right
         if (gamepad1.left_stick_y != 0){
-            frontLeft.setPower(-gamepad1.left_stick_y );
-            frontRight.setPower(-gamepad1.left_stick_y);
-            backLeft.setPower(gamepad1.left_stick_y);
-            backRight.setPower(gamepad1.left_stick_y);
+            frontLeft.setPower(gamepad1.left_stick_y );
+            frontRight.setPower(gamepad1.left_stick_y);
+            backLeft.setPower(-gamepad1.left_stick_y);
+            backRight.setPower(-gamepad1.left_stick_y);
         } else if(gamepad1.left_stick_x != 0){
             frontLeft.setPower(gamepad1.left_stick_x);
             frontRight.setPower(-gamepad1.left_stick_x);
@@ -77,9 +76,13 @@ public class OmniTele extends OpMode {
         }
 
         //This adds support for the arm
-        if (gamepad2.left_stick_y != 0){
+        if (gamepad2.left_stick_y  > 0) {
             armRight.setPower(gamepad2.left_stick_y * .4);
             armLeft.setPower(-gamepad2.left_stick_y * .4);
+
+        }else if(gamepad2.left_stick_y < 0 ){
+            armRight.setPower(gamepad2.left_stick_y * .1);
+            armLeft.setPower(gamepad2.left_stick_y * .1);
         } else {
             armRight.setPower(0);
             armLeft.setPower(0);
