@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp(name="StndTele", group="9191")
 
-public class ChaseTele extends OpMode {
+public class StndTele extends OpMode {
     //Defining variable for L&R wheels
     public DcMotor frontLeft; //Front left wheel
     public DcMotor frontRight; //Front right wheel
