@@ -9,10 +9,10 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 public class ChaseTele extends OpMode {
     //Defining variable for L&R wheels
-    public DcMotor frontLeft; //left wheel
-    public DcMotor frontRight; //right wheel
-    public DcMotor backLeft; //left wheel
-    public DcMotor backRight; //right wheel
+    public DcMotor frontLeft; //Front left wheel
+    public DcMotor frontRight; //Front right wheel
+    public DcMotor backLeft; //Back left wheel
+    public DcMotor backRight; //Back right wheel
     public DcMotor armLeft; //Left arm motor
     public DcMotor armRight; //Right arm motor
     public Servo leftServo; //Left servo on arm

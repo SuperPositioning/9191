@@ -21,7 +21,7 @@ public class OmniTele extends OpMode {
     private Servo gripperRightHand; //This defines the right servo of the gripper as a servo
 
     @Override
-    public void init(){
+    public void init() {
         frontLeft = hardwareMap.dcMotor.get("frontLeft"); //Sets a value for the front left motor
         frontRight = hardwareMap.dcMotor.get("frontRight"); //Sets a value for the front right motor
         backLeft = hardwareMap.dcMotor.get("backLeft"); //Sets a value for the back left motor
@@ -37,19 +37,19 @@ public class OmniTele extends OpMode {
         gripperLeftHand.setPosition(0); //This initializes the left servo for the gripper
     }
 
-    public void loop(){
+    public void loop() {
         //This stores the current position of the left and right hand servos of the gripper as there current position
         //This needs to be in the loop because it needs to preform this action a lot
         double gripperLeftHandPos = gripperLeftHand.getPosition();
         double gripperRightHandPos = gripperRightHand.getPosition();
 
         //This deals with moving the robot forward, backward, left, or right
-        if (gamepad1.left_stick_y != 0){
-            frontLeft.setPower(gamepad1.left_stick_y );
+        if (gamepad1.left_stick_y != 0) {
+            frontLeft.setPower(gamepad1.left_stick_y);
             frontRight.setPower(gamepad1.left_stick_y);
             backLeft.setPower(-gamepad1.left_stick_y);
             backRight.setPower(-gamepad1.left_stick_y);
-        } else if(gamepad1.left_stick_x != 0){
+        } else if (gamepad1.left_stick_x != 0) {
             frontLeft.setPower(gamepad1.left_stick_x);
             frontRight.setPower(-gamepad1.left_stick_x);
             backLeft.setPower(-gamepad1.left_stick_x);
@@ -74,13 +74,12 @@ public class OmniTele extends OpMode {
             gripperRightHand.setPosition(gripperRightHandPos - .02);
             gripperLeftHand.setPosition(gripperLeftHandPos + .02);
         }
-
         //This adds support for the arm
-        if (gamepad2.left_stick_y  > 0) {
+        if (gamepad2.left_stick_y > 0) {
             armRight.setPower(gamepad2.left_stick_y * .4);
             armLeft.setPower(-gamepad2.left_stick_y * .4);
 
-        }else if(gamepad2.left_stick_y < 0 ){
+        } else if (gamepad2.left_stick_y < 0) {
             armRight.setPower(gamepad2.left_stick_y * .1);
             armLeft.setPower(gamepad2.left_stick_y * .1);
         } else {
