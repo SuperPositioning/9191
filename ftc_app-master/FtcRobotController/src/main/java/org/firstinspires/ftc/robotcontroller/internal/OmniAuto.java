@@ -18,7 +18,7 @@ public class OmniAuto extends LinearOpMode{
     private Servo gripperLeftHand; //This defines the left servo of the gripper as a servo
     private Servo gripperRightHand; //This defines the right servo of the gripper as a servo
 
-    private void goForward (double power, int runtime){
+    private void goBack (double power, int runtime){
         frontLeft.setPower(power);
         frontRight.setPower(power);
         backLeft.setPower(-power);
@@ -44,6 +44,6 @@ public class OmniAuto extends LinearOpMode{
         gripperLeftHand.setPosition(0); //This initializes the left servo for the gripper
 
         waitForStart(); //Anything after this will be run after we press initialize
-        goForward(1,1500);
+        goBack(1,1500);
     }
 }
