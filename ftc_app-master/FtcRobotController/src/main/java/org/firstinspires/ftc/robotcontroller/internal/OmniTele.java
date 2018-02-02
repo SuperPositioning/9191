@@ -102,7 +102,7 @@ public class OmniTele extends OpMode {
             } else if (gamepad2.left_stick_y < 0) { //Moving up
                 armRight.setPower(-gamepad2.left_stick_y * .4);
                 armLeft.setPower(-gamepad2.left_stick_y * .4);
-            } else {
+            } else { //
                 armRight.setPower(0);
                 armLeft.setPower(0);
             }
