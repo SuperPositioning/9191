@@ -19,6 +19,7 @@ public class OmniTele extends OpMode {
     private DcMotor armLeft; //This defines the arm motor as a motor
     private Servo gripperLeftHand; //This defines the left servo of the gripper as a servo
     private Servo gripperRightHand; //This defines the right servo of the gripper as a servo
+    private boolean switchSpeed = false;
 
     @Override
     public void init() {
@@ -74,33 +75,37 @@ public class OmniTele extends OpMode {
             gripperRightHand.setPosition(gripperRightHandPos - .02);
             gripperLeftHand.setPosition(gripperLeftHandPos + .02);
         }
-        //This adds support for the arm
-<<<<<<< HEAD
-<<<<<<< HEAD
-        if (gamepad2.left_stick_y > 0) { //Moving up
-            armRight.setPower(gamepad2.left_stick_y * .4);
-            armLeft.setPower(gamepad2.left_stick_y * .4);
-        } else if (gamepad2.left_stick_y < 0) { //Moving down
-            armRight.setPower(-gamepad2.left_stick_y * .1);
-            armLeft.setPower(-gamepad2.left_stick_y * .1);
-=======
-=======
->>>>>>> d9550230facf0a31c813857b7f3c01db56a95bbd
-        if (gamepad2.left_stick_y > 0) {
-            armRight.setPower(gamepad2.left_stick_y * .1);
-            armLeft.setPower(-gamepad2.left_stick_y * .1);
 
-        } else if (gamepad2.left_stick_y < 0) {
-            armRight.setPower(gamepad2.left_stick_y * .4);
-            armLeft.setPower(-gamepad2.left_stick_y * .4);
-<<<<<<< HEAD
->>>>>>> d9550230facf0a31c813857b7f3c01db56a95bbd
-=======
->>>>>>> d9550230facf0a31c813857b7f3c01db56a95bbd
-        } else {
-            armRight.setPower(0);
-            armLeft.setPower(0);
+        if(gamepad2.right_bumper){
+            switchSpeed = !switchSpeed;
         }
+
+        //This adds support for the arm
+        if(switchSpeed) {
+            if (gamepad2.left_stick_y > 0) { //Moving up
+                armRight.setPower(gamepad2.left_stick_y * .4);
+                armLeft.setPower(gamepad2.left_stick_y * .4);
+            } else if (gamepad2.left_stick_y < 0) { //Moving down
+                armRight.setPower(-gamepad2.left_stick_y * .1);
+                armLeft.setPower(-gamepad2.left_stick_y * .1);
+            } else {
+                armRight.setPower(0);
+                armLeft.setPower(0);
+            }
+        } else {
+            if (gamepad2.left_stick_y > 0) {
+                armRight.setPower(gamepad2.left_stick_y * .1);
+                armLeft.setPower(gamepad2.left_stick_y * .1);
+
+            } else if (gamepad2.left_stick_y < 0) {
+                armRight.setPower(-gamepad2.left_stick_y * .4);
+                armLeft.setPower(-gamepad2.left_stick_y * .4);
+            } else {
+                armRight.setPower(0);
+                armLeft.setPower(0);
+            }
+        }
+
         telemetry.addLine("left: " + gripperLeftHandPos);
         telemetry.addLine("right: " + gripperRightHandPos);
     }
