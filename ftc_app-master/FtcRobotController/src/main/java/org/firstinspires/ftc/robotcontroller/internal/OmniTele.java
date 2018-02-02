@@ -19,7 +19,7 @@ public class OmniTele extends OpMode {
     private DcMotor armLeft; //This defines the arm motor as a motor
     private Servo gripperLeftHand; //This defines the left servo of the gripper as a servo
     private Servo gripperRightHand; //This defines the right servo of the gripper as a servo
-    private boolean switchSpeed = false;
+    private boolean switchSpeed = false; //This variable will make the arm be able to switch the power depending on which side the arm is on
 
     @Override
     public void init() {
@@ -45,17 +45,17 @@ public class OmniTele extends OpMode {
         double gripperRightHandPos = gripperRightHand.getPosition();
 
         //This deals with moving the robot forward, backward, left, or right
-        if (gamepad1.left_stick_y != 0) {
+        if (gamepad1.left_stick_y != 0) { //This moves the robot forward and back
             frontLeft.setPower(gamepad1.left_stick_y);
             frontRight.setPower(gamepad1.left_stick_y);
             backLeft.setPower(-gamepad1.left_stick_y);
             backRight.setPower(-gamepad1.left_stick_y);
-        } else if (gamepad1.left_stick_x != 0) {
+        } else if (gamepad1.left_stick_x != 0) { //This moves the robot left and right
             frontLeft.setPower(gamepad1.left_stick_x);
             frontRight.setPower(-gamepad1.left_stick_x);
             backLeft.setPower(-gamepad1.left_stick_x);
             backRight.setPower(gamepad1.left_stick_x);
-        } else if (gamepad1.right_stick_x != 0) {
+        } else if (gamepad1.right_stick_x != 0) { //This rotates the robot left and right
             frontLeft.setPower(-gamepad1.right_stick_x);
             frontRight.setPower(-gamepad1.right_stick_x);
             backLeft.setPower(-gamepad1.right_stick_x);
@@ -76,12 +76,14 @@ public class OmniTele extends OpMode {
             gripperLeftHand.setPosition(gripperLeftHandPos + .02);
         }
 
+        //If the right bumper is pushed, the operator is saying the arm is on the other side of the robot
         if(gamepad2.right_bumper){
             switchSpeed = !switchSpeed;
         }
 
         //This adds support for the arm
-        if(switchSpeed) {
+        if(switchSpeed) { //This sees which side of the robot the arm is on
+            //If the power is higher than 10% of what it should be people will break the robot because they have no self-control
             if (gamepad2.left_stick_y > 0) { //Moving up
                 armRight.setPower(gamepad2.left_stick_y * .4);
                 armLeft.setPower(gamepad2.left_stick_y * .4);
@@ -93,11 +95,11 @@ public class OmniTele extends OpMode {
                 armLeft.setPower(0);
             }
         } else {
-            if (gamepad2.left_stick_y > 0) {
+            //If the power is higher than 10% of what it should be people will break the robot because they have no self-control
+            if (gamepad2.left_stick_y > 0) { //Moving down
                 armRight.setPower(gamepad2.left_stick_y * .1);
                 armLeft.setPower(gamepad2.left_stick_y * .1);
-
-            } else if (gamepad2.left_stick_y < 0) {
+            } else if (gamepad2.left_stick_y < 0) { //Moving up
                 armRight.setPower(-gamepad2.left_stick_y * .4);
                 armLeft.setPower(-gamepad2.left_stick_y * .4);
             } else {
@@ -105,8 +107,5 @@ public class OmniTele extends OpMode {
                 armLeft.setPower(0);
             }
         }
-
-        telemetry.addLine("left: " + gripperLeftHandPos);
-        telemetry.addLine("right: " + gripperRightHandPos);
     }
 }
