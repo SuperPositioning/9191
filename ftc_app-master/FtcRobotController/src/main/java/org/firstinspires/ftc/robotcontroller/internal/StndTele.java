@@ -8,7 +8,6 @@ import com.qualcomm.robotcore.hardware.Servo;
 @TeleOp(name="StndTele", group="9191")
 
 public class StndTele extends OpMode {
-    //Defining variable for L&R wheels
     public DcMotor frontLeft; //Front left wheel
     public DcMotor frontRight; //Front right wheel
     public DcMotor backLeft; //Back left wheel
@@ -36,8 +35,8 @@ public class StndTele extends OpMode {
     }
     @Override
     public void loop() {
-        double leftServoPos = leftServo.getPosition(); //Creates a variable that has the value of the current position of servo 1 and has decimal values
-        double rightServoPos = rightServo.getPosition(); //Creates a variable that has the value of the current position of servo 2 and has decimal values
+        double leftServoPos = leftServo.getPosition();
+        double rightServoPos = rightServo.getPosition();
         //Servos
         if (gamepad2.right_stick_x < 0 && leftServoPos < .8 && rightServoPos > -.8) { //If the right stick is pushed left, the servos close
             leftServo.setPosition(leftServoPos + .02);
