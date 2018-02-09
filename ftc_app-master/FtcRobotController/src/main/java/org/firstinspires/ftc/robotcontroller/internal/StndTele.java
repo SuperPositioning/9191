@@ -39,11 +39,11 @@ public class StndTele extends OpMode {
         double rightServoPos = rightServo.getPosition();
         //Servos
         if (gamepad2.right_stick_x < 0 && leftServoPos < .8 && rightServoPos > -.8) { //If the right stick is pushed left, the servos close
-            leftServo.setPosition(leftServoPos + .02);
-            rightServo.setPosition(rightServoPos - .02);
+            leftServo.setPosition(leftServoPos + .04);
+            rightServo.setPosition(rightServoPos - .04);
         } else if (gamepad2.right_stick_x > 0 && leftServoPos != 0 && rightServoPos != 1) { //If the left stick is pushed right, the servos open
-            leftServo.setPosition(leftServoPos - .02);
-            rightServo.setPosition(rightServoPos + .02);
+            leftServo.setPosition(leftServoPos - .04);
+            rightServo.setPosition(rightServoPos + .04);
         }
         //Driving
         if (gamepad1.left_stick_y != 0) { //Driving

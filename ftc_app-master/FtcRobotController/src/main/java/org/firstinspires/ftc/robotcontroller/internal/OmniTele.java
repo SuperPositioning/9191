@@ -19,7 +19,6 @@ public class OmniTele extends OpMode {
     private DcMotor armLeft; //This defines the arm motor as a motor
     private Servo gripperLeftHand; //This defines the left servo of the gripper as a servo
     private Servo gripperRightHand; //This defines the right servo of the gripper as a servo
-    private boolean switchSpeed = true; //This variable will make the arm be able to switch the power depending on which side the arm is on
 
     @Override
     public void init() {
@@ -56,10 +55,10 @@ public class OmniTele extends OpMode {
             backLeft.setPower(-gamepad1.left_stick_x);
             backRight.setPower(gamepad1.left_stick_x);
         } else if (gamepad1.right_stick_x != 0) { //This rotates the robot left and right
-            frontLeft.setPower(-gamepad1.right_stick_x);
-            frontRight.setPower(-gamepad1.right_stick_x);
-            backLeft.setPower(-gamepad1.right_stick_x);
-            backRight.setPower(-gamepad1.right_stick_x);
+            frontLeft.setPower(-gamepad1.right_stick_x*.85);
+            frontRight.setPower(-gamepad1.right_stick_x*.85);
+            backLeft.setPower(-gamepad1.right_stick_x*.85);
+            backRight.setPower(-gamepad1.right_stick_x*.85);
         } else {
             frontLeft.setPower(0);
             frontRight.setPower(0);
@@ -68,45 +67,21 @@ public class OmniTele extends OpMode {
         }
 
         //This code will have the gripper close and open
-        if (gamepad2.right_stick_x < 0 && gripperRightHandPos != 1 && gripperLeftHandPos != 0) { //If the right stick is pushed left, the servos close
-            gripperRightHand.setPosition(gripperRightHandPos + .02);
-            gripperLeftHand.setPosition(gripperLeftHandPos - .02);
-        } else if (gamepad2.right_stick_x > 0 && gripperRightHandPos != 0 && gripperLeftHandPos != 1) { //If the left stick is pushed right, the servos open
+        if (gamepad2.right_stick_x < 0 && gripperRightHandPos != 0 && gripperLeftHandPos != 1) { //If the right stick is pushed left, the servos close
             gripperRightHand.setPosition(gripperRightHandPos - .02);
             gripperLeftHand.setPosition(gripperLeftHandPos + .02);
-        }
-
-        //If the right bumper is pushed, the operator is saying the arm is on the other side of the robot
-        if(gamepad2.right_bumper){
-            switchSpeed = !switchSpeed;
+        } else if (gamepad2.right_stick_x > 0 && gripperRightHandPos != 1 && gripperLeftHandPos != 0) { //If the left stick is pushed right, the servos open
+            gripperRightHand.setPosition(gripperRightHandPos + .02);
+            gripperLeftHand.setPosition(gripperLeftHandPos - .02);
         }
 
         //This adds support for the arm
-        if(switchSpeed) { //This sees which side of the robot the arm is on
-            //If the power is higher than 10% of what it should be people will break the robot because they have no self-control
-            if (gamepad2.left_stick_y > 0) { //Moving up
-                armRight.setPower(gamepad2.left_stick_y * .1);
-                armLeft.setPower(-gamepad2.left_stick_y * .1);
-            } else if (gamepad2.left_stick_y < 0) { //Moving down
-                armRight.setPower(gamepad2.left_stick_y * .4);
-                armLeft.setPower(-gamepad2.left_stick_y * .4);
-            } else {
-                armRight.setPower(0);
-                armLeft.setPower(0);
-            }
-        } else {
-            //If the power is higher than 10% of what it should be people will break the robot because they have no self-control
-            if (gamepad2.left_stick_y > 0) { //Moving down
-                armRight.setPower(gamepad2.left_stick_y * .4);
-                armLeft.setPower(-gamepad2.left_stick_y * .4);
-            } else if (gamepad2.left_stick_y < 0) { //Moving up
-                armRight.setPower(gamepad2.left_stick_y * .1);
-                armLeft.setPower(-gamepad2.left_stick_y * .1);
-            } else {
-                armRight.setPower(0);
-                armLeft.setPower(0);
-            }
+        if (gamepad2.left_stick_y != 0) {
+            armRight.setPower(gamepad2.left_stick_y * .4);
+            armLeft.setPower(-gamepad2.left_stick_y * .4);
+        }  else {
+            armRight.setPower(0);
+            armLeft.setPower(0);
         }
-        telemetry.addLine("" + switchSpeed);
     }
 }
