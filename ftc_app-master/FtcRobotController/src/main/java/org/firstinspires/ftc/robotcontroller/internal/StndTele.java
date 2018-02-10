@@ -48,16 +48,16 @@ public class StndTele extends OpMode {
         //Driving
         if (gamepad1.left_stick_y != 0) { //Driving
             //If the left stick of controller 1 y not = 0, the robot will move forward or backward, setting the power to how far the stick is pushed
-            frontLeft.setPower(gamepad1.left_stick_y * .8);
-            frontRight.setPower(gamepad1.left_stick_y * .8);
-            backLeft.setPower(gamepad1.left_stick_y * -.8);
-            backRight.setPower(gamepad1.left_stick_y * -.8);
+            frontLeft.setPower(gamepad1.left_stick_y * .55);
+            frontRight.setPower(gamepad1.left_stick_y * .55);
+            backLeft.setPower(gamepad1.left_stick_y * -.55);
+            backRight.setPower(gamepad1.left_stick_y * -.55);
         } else if (gamepad1.right_stick_x != 0) { //Turning
             //If the right stick of controller 1 x not = 0, the robot will turn right or left, setting the power to how far the stick is pushed
-            frontLeft.setPower(-gamepad1.right_stick_x * .5);
-            frontRight.setPower(gamepad1.right_stick_x * .5);
-            backLeft.setPower(-gamepad1.right_stick_x * .5);
-            backRight.setPower(gamepad1.right_stick_x * .5);
+            frontLeft.setPower(-gamepad1.right_stick_x * .35);
+            frontRight.setPower(gamepad1.right_stick_x * .35);
+            backLeft.setPower(-gamepad1.right_stick_x * .35);
+            backRight.setPower(gamepad1.right_stick_x * .35);
         } else {//Null
             frontLeft.setPower(0);
             frontRight.setPower(0);

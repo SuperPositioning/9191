@@ -17,11 +17,11 @@ public class StndAuto extends LinearOpMode {
     public Servo rightServo; //Right servo on arm
 
 
-    private void goForward(double power, int runtime) {
-        frontLeft.setPower(-power);
-        frontRight.setPower(-power);
-        backLeft.setPower(power);
-        backRight.setPower(power);
+    private void goBackward(double power, int runtime) {
+        frontLeft.setPower(power);
+        frontRight.setPower(power);
+        backLeft.setPower(-power);
+        backRight.setPower(-power);
         sleep(runtime);
         backLeft.setPower(0);
         backRight.setPower(0);
@@ -46,6 +46,6 @@ public class StndAuto extends LinearOpMode {
         rightServo.setPosition(1); //Setting rightServo to start in initialization at start position, has to be between 0 and 1
 
         waitForStart();
-        goForward(.5,1500);
+        goBackward(.5,1500);
     }
 }
