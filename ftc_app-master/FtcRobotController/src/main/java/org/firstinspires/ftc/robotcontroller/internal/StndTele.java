@@ -8,14 +8,14 @@ import com.qualcomm.robotcore.hardware.Servo;
 @TeleOp(name="StndTele", group="9191")
 
 public class StndTele extends OpMode {
-    public DcMotor frontLeft; //Front left wheel
-    public DcMotor frontRight; //Front right wheel
-    public DcMotor backLeft; //Back left wheel
-    public DcMotor backRight; //Back right wheel
-    public DcMotor armLeft; //Left arm motor
-    public DcMotor armRight; //Right arm motor
-    public Servo leftServo; //Left servo on arm
-    public Servo rightServo; //Right servo on arm
+    private DcMotor frontLeft; //Front left wheel
+    private DcMotor frontRight; //Front right wheel
+    private DcMotor backLeft; //Back left wheel
+    private DcMotor backRight; //Back right wheel
+    private DcMotor armLeft; //Left arm motor
+    private DcMotor armRight; //Right arm motor
+    private Servo leftServo; //Left servo on arm
+    private Servo rightServo; //Right servo on arm
 
     @Override
     public void init() {
@@ -27,8 +27,8 @@ public class StndTele extends OpMode {
         armRight = hardwareMap.dcMotor.get("armRight"); //Right motor arm is defined and named
         leftServo = hardwareMap.servo.get("leftServo"); //leftServo (gripper servo) is defined
         rightServo = hardwareMap.servo.get("rightServo"); //rightServo (gripper servo) is defined
-        frontRight.setDirection(DcMotorSimple.Direction.REVERSE); //Right wheels are always negative, for wheel base, because of base assembly
-        backRight.setDirection(DcMotorSimple.Direction.REVERSE); //Right wheels are always negative, for wheel base, because of base assembly
+        frontRight.setDirection(DcMotorSimple.Direction.REVERSE); //Right wheels are always negative
+        backRight.setDirection(DcMotorSimple.Direction.REVERSE); //Right wheels are always negative
         armLeft.setDirection(DcMotorSimple.Direction.REVERSE); //Right arm is always negative for lifting, because of assembly
         leftServo.setPosition(-1); //Setting leftServo to start in initialization at start position, has to be between 0 and 1
         rightServo.setPosition(1); //Setting rightServo to start in initialization at start position, has to be between 0 and 1
@@ -68,7 +68,7 @@ public class StndTele extends OpMode {
         if (gamepad2.left_stick_y < 0) { //If left stick is pushed up, arm moves up
             armLeft.setPower(gamepad2.left_stick_y * .5);
             armRight.setPower(gamepad2.left_stick_y * .5);
-        } else if (gamepad2.left_stick_y > 0) { //If left stick is pushed down, arm moves down
+        } else if (gamepad2.left_stick_y > 0 ) { //If left stick is pushed down, arm moves down
             armLeft.setPower(gamepad2.left_stick_y * .1);
             armRight.setPower(gamepad2.left_stick_y * .1);
         } else { //Null
@@ -76,8 +76,8 @@ public class StndTele extends OpMode {
             armRight.setPower(0);
         }
         if (gamepad2.right_bumper){ //Button to set servos just outside of the size of the cube
-            leftServo.setPosition(.65);//More towards 1 is more open
-            rightServo.setPosition(.45);//More towards 1 is more open
+            leftServo.setPosition(.7);//More towards 1 is more open
+            rightServo.setPosition(.3);//More towards 1 is more open
         }
     }
 }

@@ -46,6 +46,6 @@ public class StndAuto extends LinearOpMode {
         rightServo.setPosition(1); //Setting rightServo to start in initialization at start position, has to be between 0 and 1
 
         waitForStart();
-        goBackward(.5,1500);
+        goBackward(.25,1500);
     }
 }
