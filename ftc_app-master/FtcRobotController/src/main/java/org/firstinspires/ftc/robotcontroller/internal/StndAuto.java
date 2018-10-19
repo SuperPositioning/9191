@@ -33,7 +33,7 @@ public class StndAuto extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         frontLeft = hardwareMap.dcMotor.get("frontLeft"); //Left wheel motor is defined and named
         frontRight = hardwareMap.dcMotor.get("frontRight"); //Right wheel motor is defined and named
-        backLeft = hardwareMap.dcMotor.get("backLeft"); //Left wheel motor is defined and named
+        backLeft = hardwareMap.dcMotor.get("backLeft"); //Back left wheel motor is defined and named
         backRight = hardwareMap.dcMotor.get("backRight"); //Back right wheel motor is defined and named
         armLeft = hardwareMap.dcMotor.get("armLeft");  //Left motor arm is defined and named
         armRight = hardwareMap.dcMotor.get("armRight"); //Right motor arm is defined and named
@@ -47,5 +47,7 @@ public class StndAuto extends LinearOpMode {
 
         waitForStart();
         goBackward(.25,1500);
+        telemetry.addLine("Right servo position :: " + leftServo.getPosition());
+        telemetry.addLine("Left servo position :: " + rightServo.getPosition());
     }
 }
